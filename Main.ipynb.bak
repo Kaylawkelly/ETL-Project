@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -12,88 +12,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 31,
-   "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/html": [
-       "<div>\n",
-       "<style scoped>\n",
-       "    .dataframe tbody tr th:only-of-type {\n",
-       "        vertical-align: middle;\n",
-       "    }\n",
-       "\n",
-       "    .dataframe tbody tr th {\n",
-       "        vertical-align: top;\n",
-       "    }\n",
-       "\n",
-       "    .dataframe thead th {\n",
-       "        text-align: right;\n",
-       "    }\n",
-       "</style>\n",
-       "<table border=\"1\" class=\"dataframe\">\n",
-       "  <thead>\n",
-       "    <tr style=\"text-align: right;\">\n",
-       "      <th></th>\n",
-       "      <th>State</th>\n",
-       "      <th>Code</th>\n",
-       "    </tr>\n",
-       "  </thead>\n",
-       "  <tbody>\n",
-       "    <tr>\n",
-       "      <th>0</th>\n",
-       "      <td>Alabama</td>\n",
-       "      <td>AL</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>1</th>\n",
-       "      <td>Alaska</td>\n",
-       "      <td>AK</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2</th>\n",
-       "      <td>Arizona</td>\n",
-       "      <td>AZ</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>3</th>\n",
-       "      <td>Arkansas</td>\n",
-       "      <td>AR</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>4</th>\n",
-       "      <td>California</td>\n",
-       "      <td>CA</td>\n",
-       "    </tr>\n",
-       "  </tbody>\n",
-       "</table>\n",
-       "</div>"
-      ],
-      "text/plain": [
-       "        State Code\n",
-       "0     Alabama   AL\n",
-       "1      Alaska   AK\n",
-       "2     Arizona   AZ\n",
-       "3    Arkansas   AR\n",
-       "4  California   CA"
-      ]
-     },
-     "execution_count": 31,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
-   "source": [
-    "#States\n",
-    "ST_file = \"Resources/State.csv\"\n",
-    "ST_df = pd.read_csv(ST_file)\n",
-    "ST_df.head()"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 32,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [
     {
@@ -247,7 +166,7 @@
        "4   56,042,330   56,059,240   56,046,620   55,982,803  "
       ]
      },
-     "execution_count": 32,
+     "execution_count": 10,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -261,7 +180,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 35,
+   "execution_count": 14,
    "metadata": {},
    "outputs": [
     {
@@ -335,7 +254,7 @@
        "      <td>11.74</td>\n",
        "      <td>28.88</td>\n",
        "      <td>21.26</td>\n",
-       "      <td>0</td>\n",
+       "      <td>—</td>\n",
        "      <td>10.24</td>\n",
        "      <td>17.67</td>\n",
        "      <td>7.76</td>\n",
@@ -351,7 +270,7 @@
        "      <td>25.05</td>\n",
        "      <td>15.93</td>\n",
        "      <td>24.72</td>\n",
-       "      <td>0</td>\n",
+       "      <td>—</td>\n",
        "      <td>22.88</td>\n",
        "      <td>23.52</td>\n",
        "      <td>0.68</td>\n",
@@ -370,7 +289,7 @@
        "      <td>19.22</td>\n",
        "      <td>15.5</td>\n",
        "      <td>20.64</td>\n",
-       "      <td>0</td>\n",
+       "      <td>—</td>\n",
        "      <td>22.44</td>\n",
        "      <td>20.61</td>\n",
        "      <td>0.81</td>\n",
@@ -413,9 +332,9 @@
        "\n",
        "   Motor Gasoline Residual Fuel Oil  Other  Total Nuclear Fuel  \\\n",
        "0           20.40              9.08  26.54  20.47         0.74   \n",
-       "1           30.73             11.74  28.88  21.26            0   \n",
-       "2           24.72                 0  22.88  23.52         0.68   \n",
-       "3           20.64                 0  22.44  20.61         0.81   \n",
+       "1           30.73             11.74  28.88  21.26            —   \n",
+       "2           24.72                 —  22.88  23.52         0.68   \n",
+       "3           20.64                 —  22.44  20.61         0.81   \n",
        "4           28.09             14.93  28.81  24.72         0.68   \n",
        "\n",
        "   Wood and Waste  Total.1  Electric Power Sector  Electric Retail Sales  \\\n",
@@ -433,7 +352,7 @@
        "4         24.29  "
       ]
      },
-     "execution_count": 35,
+     "execution_count": 14,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -442,14 +361,12 @@
     "#Energy Type (Paul)\n",
     "EU_file = \"Resources/EnergyUsage.csv\"\n",
     "energy_df = pd.read_csv(EU_file)\n",
-    "energy_df = energy_df.replace(to_replace =\"—\",\n",
-    "                 value =\"0\")\n",
     "energy_df.head()"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 17,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [
     {
@@ -473,9 +390,10 @@
        "  <thead>\n",
        "    <tr style=\"text-align: right;\">\n",
        "      <th></th>\n",
-       "      <th>Consumption Rank</th>\n",
-       "      <th>Code</th>\n",
+       "      <th>Rank</th>\n",
+       "      <th>State</th>\n",
        "      <th>Total Energy Consumed per Capita, million Btu</th>\n",
+       "      <th>Note: Rankings are based on the full source data values.</th>\n",
        "    </tr>\n",
        "  </thead>\n",
        "  <tbody>\n",
@@ -484,45 +402,57 @@
        "      <td>1</td>\n",
        "      <td>WY</td>\n",
        "      <td>967</td>\n",
+       "      <td>NaN</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>1</th>\n",
        "      <td>2</td>\n",
        "      <td>LA</td>\n",
        "      <td>945</td>\n",
+       "      <td>NaN</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>2</th>\n",
        "      <td>3</td>\n",
        "      <td>ND</td>\n",
        "      <td>872</td>\n",
+       "      <td>NaN</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>3</th>\n",
        "      <td>4</td>\n",
        "      <td>AK</td>\n",
        "      <td>830</td>\n",
+       "      <td>NaN</td>\n",
        "    </tr>\n",
        "    <tr>\n",
        "      <th>4</th>\n",
        "      <td>5</td>\n",
        "      <td>IA</td>\n",
        "      <td>513</td>\n",
+       "      <td>NaN</td>\n",
        "    </tr>\n",
        "  </tbody>\n",
        "</table>\n",
        "</div>"
       ],
       "text/plain": [
-       "   Consumption Rank Code  Total Energy Consumed per Capita, million Btu\n",
-       "0                 1   WY                                            967\n",
-       "1                 2   LA                                            945\n",
-       "2                 3   ND                                            872\n",
-       "3                 4   AK                                            830\n",
-       "4                 5   IA                                            513"
+       "   Rank State  Total Energy Consumed per Capita, million Btu  \\\n",
+       "0     1    WY                                            967   \n",
+       "1     2    LA                                            945   \n",
+       "2     3    ND                                            872   \n",
+       "3     4    AK                                            830   \n",
+       "4     5    IA                                            513   \n",
+       "\n",
+       "   Note: Rankings are based on the full source data values.  \n",
+       "0                                                NaN         \n",
+       "1                                                NaN         \n",
+       "2                                                NaN         \n",
+       "3                                                NaN         \n",
+       "4                                                NaN         "
       ]
      },
-     "execution_count": 17,
+     "execution_count": 13,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -531,15 +461,12 @@
     "#Total Energy Consumed (Ryan)\n",
     "TEC_file = \"Resources/TotalEnergyConsumed.csv\"\n",
     "TEC_df = pd.read_csv(TEC_file)\n",
-    "#list(TEC_df.columns.values)\n",
-    "TEC_df=TEC_df.drop(columns=['Note: Rankings are based on the full source data values.'])\n",
-    "TEC_df=TEC_df.rename(columns={\"State\": \"Code\", \"Rank\": \"Consumption Rank\"})\n",
     "TEC_df.head()"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 15,
    "metadata": {
     "scrolled": true
    },
@@ -665,7 +592,7 @@
        "4                                                NaN                      "
       ]
      },
-     "execution_count": 5,
+     "execution_count": 15,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -679,7 +606,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 19,
    "metadata": {
     "scrolled": true
    },
@@ -1390,7 +1317,7 @@
        "50                              2941                             51  "
       ]
      },
-     "execution_count": 6,
+     "execution_count": 19,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1402,7 +1329,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 23,
    "metadata": {},
    "outputs": [
     {
@@ -2058,7 +1985,7 @@
        "50                 49                   2941                  51  "
       ]
      },
-     "execution_count": 7,
+     "execution_count": 23,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2070,6 +1997,87 @@
     "                        \"Expenditures per Capita, Dollars\":\"Expenditures, Dollars\",\n",
     "                          \"Expenditures per Capita, Rank\":\"Expenditures, Rank\"})\n",
     "NewSR_df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>State</th>\n",
+       "      <th>Code</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>Alabama</td>\n",
+       "      <td>AL</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>Alaska</td>\n",
+       "      <td>AK</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>Arizona</td>\n",
+       "      <td>AZ</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>Arkansas</td>\n",
+       "      <td>AR</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>California</td>\n",
+       "      <td>CA</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "        State Code\n",
+       "0     Alabama   AL\n",
+       "1      Alaska   AK\n",
+       "2     Arizona   AZ\n",
+       "3    Arkansas   AR\n",
+       "4  California   CA"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#States\n",
+    "ST_file = \"Resources/State.csv\"\n",
+    "ST_df = pd.read_csv(ST_file)\n",
+    "ST_df.head()"
    ]
   },
   {
